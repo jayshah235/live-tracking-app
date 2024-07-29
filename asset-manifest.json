@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/live-tracking-app/static/css/main.3fe9ebb0.css",
-    "main.js": "/live-tracking-app/static/js/main.3241ca36.js",
+    "main.css": "/live-tracking-app/static/css/main.3dbaf136.css",
+    "main.js": "/live-tracking-app/static/js/main.6074ab4f.js",
     "static/js/453.0cab8259.chunk.js": "/live-tracking-app/static/js/453.0cab8259.chunk.js",
     "static/media/bike.png": "/live-tracking-app/static/media/bike.4c0a764e4211c1e5983f.png",
     "index.html": "/live-tracking-app/index.html",
-    "main.3fe9ebb0.css.map": "/live-tracking-app/static/css/main.3fe9ebb0.css.map",
-    "main.3241ca36.js.map": "/live-tracking-app/static/js/main.3241ca36.js.map",
+    "main.3dbaf136.css.map": "/live-tracking-app/static/css/main.3dbaf136.css.map",
+    "main.6074ab4f.js.map": "/live-tracking-app/static/js/main.6074ab4f.js.map",
     "453.0cab8259.chunk.js.map": "/live-tracking-app/static/js/453.0cab8259.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fe9ebb0.css",
-    "static/js/main.3241ca36.js"
+    "static/css/main.3dbaf136.css",
+    "static/js/main.6074ab4f.js"
   ]
 }
