@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
@@ -7,19 +7,17 @@ import OSM from "ol/source/OSM";
 import VectorSource from "ol/source/Vector";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
-import Style from "ol/style/Style";
 import Icon from "ol/style/Icon";
 import { fromLonLat, toLonLat } from "ol/proj";
 import scooterIcon from "./bike.png";
 import "ol/ol.css";
+import Style from "ol/style/Style";
 
 const MapComponent = () => {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [clickedCoordinates, setClickedCoordinates] = useState(null);
-  console.log(clickedCoordinates, "clickedCoordinates");
   const mapRef = useRef(null);
-  const map = useRef(null); // Create a ref to store the map instance
+  const map = useRef(null);
 
   useEffect(() => {
     if (mapRef.current) {
@@ -40,12 +38,13 @@ const MapComponent = () => {
         }),
       });
 
-      // Get current coordinates
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const lon = position.coords.longitude;
           const lat = position.coords.latitude;
           updateMapView(lon, lat);
+          setLatitude(lat);
+          setLongitude(lon);
         },
         (error) => {
           console.error("Geolocation error:", error);
@@ -56,13 +55,8 @@ const MapComponent = () => {
       map.current.on("click", (event) => {
         const coordinates = map.current.getCoordinateFromPixel(event.pixel);
         const lonLat = toLonLat(coordinates);
-        console.log(lonLat, "lonLat");
-        setClickedCoordinates(lonLat);
         setLatitude(lonLat[1]);
         setLongitude(lonLat[0]);
-        // setLatitude()
-
-        // Optionally, update map view or add a feature at the clicked location
         updateMapView(lonLat[0], lonLat[1]);
       });
     }
@@ -109,25 +103,23 @@ const MapComponent = () => {
       ref={mapRef}
       style={{ width: "100%", height: "100vh", position: "relative" }}
     >
-      <>
-        <form onSubmit={handleSearch} className="searchContainer">
-          <input
-            type="text"
-            className="search"
-            placeholder="Search latitude"
-            value={latitude}
-            onChange={(e) => setLatitude(e.target.value)}
-          />
-          <input
-            type="text"
-            className="search"
-            placeholder="Search longitude"
-            value={longitude}
-            onChange={(e) => setLongitude(e.target.value)}
-          />
-          <button type="submit">Search</button>
-        </form>
-      </>
+      <form onSubmit={handleSearch} className="searchContainer">
+        <input
+          type="text"
+          className="search"
+          placeholder="Search latitude"
+          value={latitude}
+          onChange={(e) => setLatitude(e.target.value)}
+        />
+        <input
+          type="text"
+          className="search"
+          placeholder="Search longitude"
+          value={longitude}
+          onChange={(e) => setLongitude(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 };
