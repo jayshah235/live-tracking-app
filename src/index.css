@@ -13,7 +13,27 @@ code {
     monospace;
 }
 
-.App {
-  width: 100dvw;
-  height: 100dvh;
+.search {
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.searchContainer {
+  position: fixed;
+  top: 2%;
+  left: 5%;
+  z-index: 999;
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: black;
+  opacity: 0.6;
+  color: white;
+  padding: 5px 20px;
+  cursor: pointer;
 }
